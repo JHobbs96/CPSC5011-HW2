@@ -5,6 +5,7 @@ public class InvalidPasswordException extends Exception {
 
     public InvalidPasswordException() {
         super("The password is invalid; enter 6-15 characters and at least\n" +
-                "one letter, one number, and one special character (!@#$%^&).");
+                "one letter, one number, and one special character (!@#$%^&)." +
+                "\n");
     }
 }

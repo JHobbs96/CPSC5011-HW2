@@ -41,6 +41,7 @@ public class PasswordVault implements Vault {
             throws exceptions.InvalidUsernameException,
             exceptions.InvalidPasswordException,
             exceptions.DuplicateUserException {
+        System.out.println("Attempting to add user "+ username);
         if (username.length() > 11 || username.length() < 6 ) {
             throw new exceptions.InvalidUsernameException();
         }
@@ -97,6 +98,8 @@ public class PasswordVault implements Vault {
             exceptions.UserLockedOutException,
             exceptions.PasswordMismatchException,
             exceptions.InvalidSiteException {
+        System.out.println("Attempting to add website "+ sitename+ " for user " +
+                username);
         String pass = "";
         if (!users.containsKey(username)) {
             throw new exceptions.UserNotFoundException();
@@ -114,12 +117,8 @@ public class PasswordVault implements Vault {
                 sitename.equals(sitename.toLowerCase())){
                 //Add the site and encrypt the password
                 String randomString = encryptor.randomStringGen();
-//                System.out.println(randomString);
                 String encrypted = encryptor.encrypt(randomString);
-//                System.out.println(encrypted);
                 // Return the new password
-                System.out.println("Attempting to add site "+sitename +
-                        " for user " +username);
                 System.out.println("Added site "+ sitename+ " for user " +
                         username+ " => generated new password: " +randomString+
                         "\n");
@@ -159,6 +158,9 @@ public class PasswordVault implements Vault {
             exceptions.UserNotFoundException,
             exceptions.UserLockedOutException,
             exceptions.PasswordMismatchException {
+        System.out.println("Attempting to update website password "+ sitename+
+                " for user " +
+                username);
         String pass = "";
         if (!users.containsKey(username)) {
             throw new exceptions.UserNotFoundException();
@@ -210,6 +212,9 @@ public class PasswordVault implements Vault {
             exceptions.UserNotFoundException,
             exceptions.UserLockedOutException,
             exceptions.PasswordMismatchException {
+        System.out.println("Attempting to retrieve website password "+ sitename+
+                "for user " +
+                username);
         String pass = "";
         if (!users.containsKey(username)) {
             throw new exceptions.UserNotFoundException();

@@ -61,7 +61,7 @@ public class CaesarCipher implements Encryptor {
 		// create StringBuffer size of AlphaNumericString
 		StringBuilder sb = new StringBuilder(11);
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 9; i++) {
 
 			// generate a random number between
 			// 0 to AlphaNumericString variable length
