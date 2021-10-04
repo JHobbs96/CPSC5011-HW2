@@ -21,9 +21,7 @@ public class PasswordVault implements Vault {
     }
 
     public PasswordVault(Encryptor e) {
-        users = new HashMap<String, String>();
-        sites = new HashMap<String, String>();
-        encryptor = new CaesarCipher();
+        new PasswordVault();
     }
 
     @Override
@@ -62,6 +60,7 @@ public class PasswordVault implements Vault {
                 password.contains("%") || password.contains("^") ||
                 password.contains("&")) {
             users.put(username, password);
+
             System.out.println("Added user "+username +"\n");
         } else {
             throw new exceptions.InvalidPasswordException();
@@ -114,10 +113,9 @@ public class PasswordVault implements Vault {
             if (sitename.length() > 5 && sitename.length() < 13 &&
                 sitename.equals(sitename.toLowerCase())){
                 //Add the site and encrypt the password
-                CaesarCipher cipher = new CaesarCipher();
-                String randomString = cipher.randomStringGen();
+                String randomString = encryptor.randomStringGen();
 //                System.out.println(randomString);
-                String encrypted = cipher.encrypt(randomString);
+                String encrypted = encryptor.encrypt(randomString);
 //                System.out.println(encrypted);
                 // Return the new password
                 System.out.println("Attempting to add site "+sitename +
